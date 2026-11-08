@@ -44,6 +44,18 @@
 > 未做代码签名，首次运行 Windows SmartScreen 会提示「已保护你的电脑」，
 > 点「更多信息 → 仍要运行」即可。
 
+### 界面预览
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/convert.png" alt="curl 转 Python"><br><sub>粘贴 curl，右侧即时生成 requests 代码</sub></td>
+    <td width="50%"><img src="docs/screenshots/run.png" alt="运行 Python"><br><sub>点「运行 Python」直接执行，终端显示真实返回</sub></td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="docs/screenshots/home.png" alt="首页"><br><sub>首页：左侧工具导航，右侧工作台向导（本地运行 / Docker 部署）</sub></td>
+  </tr>
+</table>
+
 ---
 
 ## Docker 部署
