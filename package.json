@@ -1,0 +1,99 @@
+{
+  "name": "curl2py-desktop",
+  "productName": "curl2py",
+  "version": "0.5.3",
+  "description": "curl2py 桌面版：curl 转 Python/Feapder 工具箱（内置运行时，离线可用）",
+  "main": "electron/main.js",
+  "author": {
+    "name": "szs3"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64",
+    "dist:nsis": "electron-builder --win nsis --x64",
+    "dist:dir": "electron-builder --win --x64 --dir"
+  },
+  "devDependencies": {
+    "electron": "40.10.2",
+    "electron-builder": "26.0.12",
+    "rcedit": "^5.0.1"
+  },
+  "build": {
+    "appId": "cn.szs3.curl2py",
+    "productName": "curl2py",
+    "copyright": "Copyright © 2026 szs3",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "app",
+        "to": "app"
+      },
+      {
+        "from": "runtime",
+        "to": "runtime"
+      },
+      {
+        "from": "desktop_launcher.py",
+        "to": "desktop_launcher.py"
+      },
+      {
+        "from": "build/icon.ico",
+        "to": "icon.ico"
+      }
+    ],
+    "asar": true,
+    "artifactName": "curl2py-${version}-win-${arch}-green.${ext}",
+    "afterPack": "build/afterPack.js",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "curl2py-${version}-win-x64-portable.${ext}",
+      "requestExecutionLevel": "user",
+      "unpackDirName": "curl2py"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "curl2py",
+      "include": "build/installer.nsh",
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "curl2py-${version}-win-x64-setup.${ext}",
+      "uninstallDisplayName": "curl2py ${version}"
+    }
+  }
+}

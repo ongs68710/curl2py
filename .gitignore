@@ -1,0 +1,35 @@
+# 依赖与构建产物（体积大 / 可重建，不入库）
+node_modules/
+dist/
+runtime/
+wheels/
+python-embed.zip
+
+# 运行时数据
+app/data/
+*.db
+*.db-journal
+*.log
+
+# 测试产物（脚本入库，结果与二进制不入库）
+.bench/data/
+.bench/rt/
+.bench/unused-assets/
+.bench/*.log
+.bench/*.png
+.bench/portable.json
+.bench/measure*.json
+.bench/baseline*.json
+.bench/optimized*.json
+.bench/final.json
+.bench/bench-verified*.json
+.bench/tools/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+__pycache__/
+*.pyc

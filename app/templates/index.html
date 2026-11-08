@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>爬虫工具库｜本地开发工具</title>
+    <meta name="theme-color" content="#e0e5ec">
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+    <script>
+        (function () {
+            var theme = "light";
+            try { theme = localStorage.getItem("curl2py.theme.v2") || "light"; } catch (e) { /* 隐私模式走默认主题 */ }
+            document.documentElement.setAttribute("data-theme", theme);
+        })();
+    </script>
+    <link rel="stylesheet" href="/static/css/theme.css?v=20261108-2">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <a class="brand" href="#/home">
+                <span class="brand-mark">C</span>
+                <span><strong>爬虫工具库</strong><small>Spider Toolbox</small></span>
+            </a>
+            <nav class="top-nav">
+                <a href="#/home">工具首页</a>
+                <a href="#/curl/python">请求转换</a>
+                <a href="#/format/json">格式化</a>
+                <a href="#/text/diff">文本处理</a>
+            </nav>
+            <div class="topbar-right">
+                <label class="search-box"><span>⌕</span><input id="tool-search" placeholder="搜索工具" autocomplete="off"></label>
+                <div class="theme-wrap">
+                    <button class="theme-btn" id="theme-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="切换主题配色" title="切换主题配色"><span class="theme-btn-dot" id="theme-toggle-dot" aria-hidden="true"></span></button>
+                    <div class="theme-popover" id="theme-popover" hidden>
+                        <div class="theme-pop-title">主题配色</div>
+                        <div class="theme-list" id="theme-list" role="radiogroup" aria-label="选择主题配色"></div>
+                        <div class="theme-pop-title theme-pop-divider">渲染效果</div>
+                        <div class="theme-list" id="perf-list" role="radiogroup" aria-label="选择渲染效果"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="app-body">
+            <aside class="sidebar" id="sidebar"></aside>
+            <main class="main-content" id="view"></main>
+        </div>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <div class="risk-modal" id="python-risk-modal" hidden>
+        <div class="risk-backdrop" data-risk-cancel></div>
+        <section class="risk-dialog" role="dialog" aria-modal="true" aria-labelledby="python-risk-title" aria-describedby="python-risk-description">
+            <h2 id="python-risk-title">运行 Python 前请确认风险</h2>
+            <p id="python-risk-description">脚本将在服务端容器中执行，可能联网、读取容器可见文件并消耗 CPU/内存资源。请勿在脚本中放入 Token、密码或其他敏感信息。</p>
+            <p class="risk-note">此确认仅授权当前浏览器会话的界面操作，不会绕过服务端权限。Compose 默认关闭脚本运行；启用时需设置 <code>ENABLE_SCRIPT_RUNNER=true</code> 并配置 <code>CURL2PY_API_TOKEN</code>。</p>
+            <div class="risk-actions"><button class="btn" id="python-risk-cancel" type="button">取消</button><button class="btn primary" id="python-risk-confirm" type="button">我已了解，继续运行</button></div>
+        </section>
+    </div>
+    <script src="/static/js/app.js?v=20261108-2"></script>
+</body>
+</html>
