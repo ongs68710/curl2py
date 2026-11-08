@@ -10,6 +10,7 @@ app/data/
 *.db
 *.db-journal
 *.log
+.release-notes.md
 
 # 测试产物（脚本入库，结果与二进制不入库）
 .bench/data/
